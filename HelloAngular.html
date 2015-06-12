@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>angularjs Hello</title>
+    <script src="angular.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script> -->
+    <script src="app.js">
+    </script>
+    <style type="text/css">
+    .odd {
+        background-color: orange;
+    }
+    
+    .even {
+        background-color: red;
+    }
+
+      input.ng-invalid { border: 1px solid red; } input.ng-valid { border: 1px solid green; }
+      
+    </style>
+</head>
+
+<body>
+    <input ng-model="baiduUrl" type="text" placeholder="Your name:" />
+    <!-- <h2>Hello {{ person.name | limitTo:3 }}</h2>	 -->
+    <h2>Hello {{ baiduUrl | lowercase | capitalize }}</h2>
+    <div ng-controller="MyController">
+        <h5>{{ clock.now }}</h5>
+        <button ng-click="add(1)">提交</button>
+        <h4>Current count: {{ counter }}</h4>
+    </div>
+    <div my-directive custom-url="baiduUrl" my-link-text="takemetobaidu"></div>
+    <!-- 双向绑定 -->
+    <br>
+    <!--ng内置指令-->
+    <input type="text" ng-model="someProperty" placeholder="TypetoEnable">
+    <button ng-model="button" ng-disabled="!someProperty">AButton</button>
+    <button ng-model="button" ng-disabled="isDisabled">waiting...({{ countDown }})</button>
+    <br>
+    <br>
+    <br>
+    <label>someProperty = {{someProperty}}</label>
+    <input type="checkbox" ng-checked="someProperty" ng-init="someProperty = null" ng-model="someProperty" />
+    <br>
+    <br>
+    <br>
+    <label>Select Two Fish:</label>
+    <input type="checkbox" ng-model="isTwoFish">
+    <br/>
+    <select>
+        <option>One Fish</option>
+        <option ng-selected="isTwoFish">Two Fish</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <a ng-href="{{ myHref }}">i feel so lucky!</a>
+    <a href="{{ myHref }}">i feel so sorry!</a>
+    <br>
+    <br>
+    <br>
+    <div style="float:left">
+        <p style="float:left">WrongWay</p>
+        <img src="{{imgSrc}}" width="120" height="60" />
+    </div>
+    <div style="float:left">
+        <p style="float:left">Rightway</p>
+        <img ng-src="{{imgSrc}}" width="120" height="60" />
+    </div>
+    <br>
+    <br>
+    <br>
+    <ul ng-controller="PeopleController">
+        <li ng-repeat="person in people" ng-class="{even: !$even, odd: !$odd}">
+            {{person.name}} lives in {{person.city}}
+        </li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <form name="signup_form" ng-controller="FormController" ng-submit="submitForm()" novalidate>
+        <div ng-repeat="field in fields" ng-form="signup_form_input">
+            <input type="text" name="dynamic_input" ng-required="field.isRequired" ng-model="field.name" placeholder="{{field.placeholder}}" />
+            <div ng-show="signup_form_input.dynamic_input.$dirty &&  signup_form_input.dynamic_input.$invalid">
+                <span class="error" ng-show="signup_form_input.dynamic_input.$error.required"> 
+			The field is required. 
+			</span>
+            </div>
+        </div>
+        <button type="submit" ng-disabled="signup_form.$invalid">
+            Submit All
+        </button>
+    </form>
+  
+</body>
+
+</html>
