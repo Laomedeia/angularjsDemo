@@ -68,17 +68,17 @@ myappmod.controller('MyController', function($scope) { //控制器申明
          {name: "lamela", city: "Brazil"} 
         ];
 })
-.controller('FormController',function($scope) { 
-$scope.fields = [ 
-{placeholder: 'Username', isRequired: true}, 
-{placeholder: 'Password', isRequired: true}, 
-{placeholder: 'Email (optional)', isRequired: false} 
-]; 
-$scope.submitForm = function() { 
-alert("it works!"); 
-}; 
-}); 
-
+.controller('signupController',  function($scope) {
+  $scope.submitted = false;
+  $scope.signupForm = function() {
+    if ($scope.signup_form.$valid) {
+      // Submit as normal
+      alert("ok");
+    } else {
+      $scope.submitted = true;
+    }
+  }
+});
 //自定义过滤器
 myappmod.filter("capitalize", function() {
     return function(input) {
