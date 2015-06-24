@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  	<meta charset="UTF-8">
+	<title>route view</title>
+	<script src="angular.js"></script>
+   	<script src="angular-route.js"></script>
+   	<script src="ngRoute.js"></script>
+</head>
+<body>
+	<div class="content" ng-controller="githubServiceController"> 
+	<div ng-view></div> 
+	<div>
+		<ul> 
+			<li ng-repeat="event in events"> 
+			<!--event.actor and event.repo are returned 
+			by the github API. To view the raw
+			API, uncomment the next line: 
+			--> 
+			<!-- {{ event | json }} --> 
+			{{ event.actor.login }} {{ event.repo.name }}
+			</li> 
+		</ul> 
+	</div>
+	</div> 
+	<footer> 
+	<h5>Footer</h5> 
+	</footer> 
+</body>
+</html>
