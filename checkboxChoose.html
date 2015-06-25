@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="checkboxNgApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script type="text/javascript" src="checkboxChooseNg.js"></script>
+</head>
+
+<body ng-controller="checkboxController">
+   <form name="checkbox_form" novalidate ng-submit="submitForm()" >
+    <accordion close-others="false">
+        <accordion-group is-open="true" heading="{{fault.faultName}}" ng-repeat="fault in deviceFaults">
+            <label class="btn btn-primary" style="margin : 2px" btn-checkbox ng-model="fault.faultDetail[$index].checked" ng-repeat="detail in fault.faultDetail track by $index">{{ detail.detailName }}</label>
+        </accordion-group>
+    </accordion>
+    <button type="submit">submit</button>
+    </form>
+     
+</body>
+
+</html>
