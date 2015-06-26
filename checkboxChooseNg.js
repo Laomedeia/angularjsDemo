@@ -32,25 +32,10 @@ checkboxNgApp.controller('checkboxController', function($scope) {
         }]
     }]
 
-    //$scope.detailFaults = 
-
     $scope.submitForm = function() {
     	console.log($scope.deviceFaults);	
     }
-    
-  //   $scope.allChooseFaults = [];
 
-  //   $scope.myFaults = {
-        
-  //   };
-
-  //   for(var i = 0, length = $scope.deviceFaults.length; i < length; i++){
-  //   	var faults = $scope.deviceFaults[i]
-  //   	for(var j= 0, length1 = faults.faultDetail.length; j < length1; j++){
-  //   		$scope.myFaults = faults.faultDetail[j]
-		// allChooseFaults.push($scope.myFaults);
-  //   	}
-  //   }
 
 
 })

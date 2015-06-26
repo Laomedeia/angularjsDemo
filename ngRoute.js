@@ -1,4 +1,9 @@
 var ngRouteMod = angular.module('myApp', ['ngRoute', 'myApp.services']);
+    ngRouteMod.config(function($httpProvider) { 
+    $httpProvider.defaults.useXDomain = true; 
+    delete $httpProvider.defaults.headers 
+    .common['X-Requested-With']; 
+    });
 // ngRouteMod.config(['$routeProvider', function($routeProvider) { 
 // $routeProvider 
 //  .when('/', { 
@@ -51,12 +56,30 @@ angular.module('myApp.services', []).factory('githubService', function($http) {
 });
 
 //使用服务
-ngRouteMod.controller('githubServiceController', function($scope, githubService) {
+ngRouteMod.controller('githubServiceController', function($scope, githubService, $http) {
     //     $http.jsonp('http://librivox.org/api/feed/audiobooks/author/Melville?format=jsonp&callback=JSON_CALLBACK').success(function (data) {
     //     $scope.data = data;
     // });
-    console.log(githubService.events('wutheringsea'));
+    //console.log(githubService.events('wutheringsea'));
     githubService.events('wutheringsea').success(function(data) {
         $scope.events = data.data;
     });
+
+    //测试http
+    $http({ 
+        method: 'GET', 
+        url: 'http://120.26.64.88/admin/zjxiu/app/deviceinfo/v_list.do'
+        }).success(function(data,status,headers,config) { 
+            console.log(data);
+            console.log(status);
+        // 当相应准备就绪时调用
+        }).error(function(data,status,headers,config) { 
+        // 当响应以错误状态返回时调用
+      })
+    
+    // $http.jsonp('http://120.26.64.88/admin/zjxiu/app/deviceinfo/v_list.do?callback=JSON_CALLBACK').success(function (data) {
+    //     //$scope.data = data;
+    //     console.log(data);
+    // });
+
 });
