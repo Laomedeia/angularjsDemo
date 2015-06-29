@@ -5,20 +5,41 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="ui-bootstrap-tpls-0.13.0.min.js"></script>
     <script type="text/javascript" src="checkboxChooseNg.js"></script>
+    <script type="text/javascript">
+        // $(function() {
+        //    $("#collapsedDiv").css("width", window.screen.width);
+        // })
+    </script>
 </head>
 
 <body ng-controller="checkboxController">
-   <form name="checkbox_form" novalidate ng-submit="submitForm()" >
+   <!-- <form name="checkbox_form" novalidate ng-submit="submitForm()" >
     <accordion close-others="false">
         <accordion-group is-open="true" heading="{{fault.faultName}}" ng-repeat="fault in deviceFaults">
-            <label class="btn btn-primary" style="margin : 2px" btn-checkbox ng-model="fault.faultDetail[$index].checked" ng-repeat="detail in fault.faultDetail track by $index">{{ detail.detailName }}</label>
+            <label class="btn btn-primary" ng-click="checkStuff(fault.faultDetail[$index])" style="margin : 2px" btn-checkbox ng-model="fault.faultDetail[$index].checked" ng-repeat="detail in fault.faultDetail track by $index">{{ detail.detailName }}</label>
         </accordion-group>
     </accordion>
+    <br><hr>
+    <div collapse="isCollapsed">
+        <div class="well well-lg">Some content</div> 
+    </div>
     <button type="submit">submit</button>
-    </form>
+    </form> -->
+    <br><br><br>
+   <!-- 
+   浮动提示框
+   <label class="btn btn-primary" btn-checkbox  popover-placement="right" popover="On the Bottom!" style="margin : 2px"  ng-model="error.isChecked" ng-repeat="error in phoneFaults.allErrors | filter : { q_type : '1' }" class="btn btn-default">{{ error.question }}</label>
+    -->
+    <!-- 切换q_type时记得重置isChecked状态 -->
+        <label class="btn btn-primary" btn-checkbox style="margin : 2px"  ng-repeat="error in phoneFaults.allErrors | filter : { q_type : '1' }" ng-click="checkStuff($event, error)"  ng-model="error.isChecked" >{{ error.question }}
+        </label>
+         <div id="collapsedDiv" style="display:none">
+            <div class="well well-lg">Some content</div> 
+         </div>
      
 </body>
 
