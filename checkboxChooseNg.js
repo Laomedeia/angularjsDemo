@@ -24,6 +24,35 @@ checkboxNgApp.controller('checkboxController', function($scope) {
 
     $scope.phoneFaults = {
         allErrors: [{
+            id : 1,
+            question: "外壳",
+            des: "严重摔坏后壳变形，磨损；后盖损坏",
+            isChecked: false,
+            q_type: "1", //开机1/不开机0
+            solves: [{
+                solve: "准系统翻新",
+                price: 248,
+                isChecked: false
+            }, {
+                solve: "后盖",
+                price: 49
+            }]
+        },{
+            id : 2,
+            question: "外壳",
+            des: "严重摔坏后壳变形，磨损；后盖损坏",
+            isChecked: false,
+            q_type: "1", //开机1/不开机0
+            solves: [{
+                solve: "准系统翻新",
+                price: 248,
+                isChecked: false
+            }, {
+                solve: "后盖",
+                price: 49
+            }]
+        },{
+            id : 3,
             question: "外壳",
             des: "严重摔坏后壳变形，磨损；后盖损坏",
             isChecked: false,
@@ -37,71 +66,7 @@ checkboxNgApp.controller('checkboxController', function($scope) {
                 price: 49
             }]
         }, {
-            question: "外壳",
-            des: "严重摔坏后壳变形，磨损；后盖损坏",
-            isChecked: false,
-            q_type: "1", //开机1/不开机0
-            solves: [{
-                solve: "准系统翻新",
-                price: 248,
-                isChecked: false
-            }, {
-                solve: "后盖",
-                price: 49
-            }]
-        },{
-            question: "外壳",
-            des: "严重摔坏后壳变形，磨损；后盖损坏",
-            isChecked: false,
-            q_type: "1", //开机1/不开机0
-            solves: [{
-                solve: "准系统翻新",
-                price: 248,
-                isChecked: false
-            }, {
-                solve: "后盖",
-                price: 49
-            }]
-        },{
-            question: "外壳",
-            des: "严重摔坏后壳变形，磨损；后盖损坏",
-            isChecked: false,
-            q_type: "1", //开机1/不开机0
-            solves: [{
-                solve: "准系统翻新",
-                price: 248,
-                isChecked: false
-            }, {
-                solve: "后盖",
-                price: 49
-            }]
-        },{
-            question: "外壳",
-            des: "严重摔坏后壳变形，磨损；后盖损坏",
-            isChecked: false,
-            q_type: "1", //开机1/不开机0
-            solves: [{
-                solve: "准系统翻新",
-                price: 248,
-                isChecked: false
-            }, {
-                solve: "后盖",
-                price: 49
-            }]
-        },{
-            question: "外壳",
-            des: "严重摔坏后壳变形，磨损；后盖损坏",
-            isChecked: false,
-            q_type: "1", //开机1/不开机0
-            solves: [{
-                solve: "准系统翻新",
-                price: 248,
-                isChecked: false
-            }, {
-                solve: "后盖",
-                price: 49
-            }]
-        },{
+            id : 4,
             question: "屏幕",
             des: "屏幕碎裂，屏幕不亮，触控失灵；无法自动调节屏幕亮度，正常贴脸打电话屏幕不灭；续航时间短，主板发热严重",
             isChecked: false,
@@ -118,6 +83,7 @@ checkboxNgApp.controller('checkboxController', function($scope) {
                 price: 59
             }]
         }, {
+            id : 5,
             question: "无法开机",
             des: "无法开机",
             isChecked: false,
@@ -155,12 +121,16 @@ checkboxNgApp.controller('checkboxController', function($scope) {
             var phoneErrors =  $scope.phoneFaults.allErrors;
             var isCollapseDiv = true;
             for(var i in phoneErrors) {
-                if (faultDetail.question != phoneErrors[i].question &&  phoneErrors[i].isChecked == true) {
+                if (faultDetail.id != phoneErrors[i].id &&  phoneErrors[i].isChecked == true) {
                     isCollapseDiv = false;
                     break;
-                } 
+                }   
             }
-            $("#collapsedDiv").css("display",  "block");
+            if (isCollapseDiv) {
+                    $("#collapsedDiv").css("display",  "none");
+            } else{
+                 $("#collapsedDiv").css("display",  "block");             
+            }
         };
     }
 
