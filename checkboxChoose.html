@@ -29,18 +29,21 @@
     </div>
     <button type="submit">submit</button>
     </form> -->
+    <button id="canStartBtn" ng-click="canStartBtnEvent()">test 1</button><button id="notStartBtn" ng-click="notStartBtnEvent()">test 2</button>
     <br><br><br>
    <!-- 
    浮动提示框
    <label class="btn btn-primary" btn-checkbox  popover-placement="right" popover="On the Bottom!" style="margin : 2px"  ng-model="error.isChecked" ng-repeat="error in phoneFaults.allErrors | filter : { q_type : '1' }" class="btn btn-default">{{ error.question }}</label>
     -->
     <!-- 切换q_type时记得重置isChecked状态 -->
-        <label class="btn btn-primary" btn-checkbox style="margin : 2px"  ng-repeat="error in phoneFaults.allErrors | filter : { q_type : '1' }" ng-click="checkStuff($event, error)"  ng-model="error.isChecked" >{{ error.question }}
+        <label class="btn btn-primary" btn-checkbox style="margin : 2px"  ng-repeat="error in phoneFaults.allErrors | filter : { q_type : qType }" ng-click="checkStuff($event, error)"  ng-model="error.isChecked" >{{ error.question }}
         </label>
-         <div id="collapsedDiv" style="display:none">
-            <div class="well well-lg">Some content</div> 
-         </div>
-     
+        <div id="collapsedDiv" style="display:none">
+            <div class="well well-lg"><p id="faultsDesp" style="word-break:break-all;"></p></div> 
+        </div>
+            <br>
+        <textarea placeholder="其他故障情况"></textarea><br>
+        <button id="submitBtn" ng-click="submitChoseFaults()">submit</button>
 </body>
 
 </html>
