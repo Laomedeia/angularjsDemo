@@ -60,8 +60,7 @@ ngRouteMod.controller('githubServiceController', function($scope, githubService,
     //     $http.jsonp('http://librivox.org/api/feed/audiobooks/author/Melville?format=jsonp&callback=JSON_CALLBACK').success(function (data) {
     //     $scope.data = data;
     // });
-    //console.log(githubService.events('wutheringsea'));
-    githubService.events('wutheringsea').success(function(data) {
+    githubService.events('xxxxx').success(function(data) {
         $scope.events = data.data;
     });
 
